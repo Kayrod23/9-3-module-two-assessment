@@ -1,0 +1,29 @@
+@media screen and (max-width: 500px){
+    #reviews {
+        display: none;
+    }
+}
+
+body {
+    background-color: lavender;
+    font-family: monospace;
+}
+
+main, header {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: skyblue;
+    height: 200px;
+}
+
+img {
+    height: 200px;
+}
+
+
