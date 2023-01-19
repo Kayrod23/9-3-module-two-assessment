@@ -7,7 +7,7 @@
 body {
     background-color: lavender;
     font-family: monospace;
-    
+
 }
 
 main, header {
@@ -15,6 +15,10 @@ main, header {
     margin-right: auto;
     width: 75%;
 }
+
+/* .section_movie {
+    width: 80%; 
+} */
 
 header {
     display: grid;
