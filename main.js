@@ -50,19 +50,23 @@ function getDescription(filmResult) {
 
 reviewForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    if (select.value === "") {
+        alert("Please select a movie first")
+    } else {
     const userInput = reviewText.value;
-    reviewForm.reset()
+    reviewForm.reset();
 
     const li = document.createElement("li");
     const strong =document.createElement("strong");
-    strong.innerHTML = `${h3.innerHTML}: `
+        strong.innerHTML = `${h3.innerHTML}: `;
     li.innerHTML = userInput;
     li.prepend(strong);
     ul.append(li);
-    
+
     resetReviews.addEventListener("click", () => {
         li.remove();
     })
+    }
 });
 
 
