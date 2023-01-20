@@ -18,7 +18,7 @@ function run() {
     .then((response) => response.json())
         .then((filmResult) => {
             grabTitles(filmResult);
-            getDescription(filmResult);
+            getDescriptionAndCallFetch(filmResult);
         })
         .catch((error) => console.err(error));
 }
@@ -33,7 +33,7 @@ function grabTitles(filmResult) {
 }
 
 
-function getDescription(filmResult) {
+function getDescriptionAndCallFetch(filmResult) {
     select.addEventListener("change", (event) => {
         event.preventDefault();
         fetch(`${base_url}/people`)
@@ -49,7 +49,6 @@ function getDescription(filmResult) {
                 div.append(pYear);
                 div.append(pDescription);
 
-                h3.setAttribute("value", filmResult[i].id)
                 h3.innerText = filmResult[i].title;
                 pYear.innerText = filmResult[i].release_date;
                 pDescription.innerText = filmResult[i].description;
@@ -90,18 +89,17 @@ select.addEventListener("change", () => {
 
 peopleButton.addEventListener("click", () => {
     ol.style.display = "block";
-    fetch(`${base_url}/people`)
-        .then((response) => response.json())
-        .then((peopleResult) => {
-            showPeople(peopleResult);
-        })
-        .catch((error) => console.log(error));
+    // fetch(`${base_url}/people`)
+    //     .then((response) => response.json())
+    //     .then((peopleResult) => {
+    //         showPeople(peopleResult);
+    //     })
+    //     .catch((error) => console.log(error));
 })
 
 function showPeople(peopleResult) {
-    console.log(h3);
     for (let i = 0; i < peopleResult.length; i++) {
-        if (h3.getAttribute("value") === peopleResult[i].films[0].slice(7)) {
+        if (select.value === peopleResult[i].films[0].slice(7)) {
             const li = document.createElement("li");
             li.style.display = 'none'
             li.innerText = peopleResult[i].name;

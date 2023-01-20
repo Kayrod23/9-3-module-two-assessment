@@ -161,7 +161,7 @@ describe("Add reviews", () => {
       .type("This movie was great!  I loved the dance to grow the tree.")
       .get('form input[type="submit"]')
       .click();
-    cy.get("li").then((items) => {
+    cy.get("ul li").then((items) => {
       const actual = items[0].innerHTML;
 
       const titlePattern =
@@ -184,7 +184,7 @@ describe("Add reviews", () => {
       .type("This is my favoirte movie of all time.")
       .get('form input[type="submit"]')
       .click();
-    cy.get("li").then((items) => {
+    cy.get("ul li").then((items) => {
       const actual = items[0].innerHTML;
       const titlePattern =
         /.*(<strong>|<b>)My Neighbor Totoro.+(<\/strong>|<\/b>).*/g;
@@ -193,7 +193,7 @@ describe("Add reviews", () => {
       expect(actual).to.match(titlePattern);
       expect(actual).to.match(descriptionPattern);
     });
-    cy.get("li").then((items) => {
+    cy.get("ul li").then((items) => {
       const actual = items[1].innerHTML;
       const titlePattern =
         /.*(<strong>|<b>)Kiki's Delivery Service.+(<\/strong>|<\/b>).*/g;
